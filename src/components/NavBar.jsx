@@ -1,4 +1,8 @@
 import { Link } from 'react-router-dom';
+
+
+// nav bar for top using Link which is recommended for modern react routing
+// apparently this is a a-href but updates faster for clientside routing
 function NavBar() {
     return (
         <nav>

@@ -1,9 +1,13 @@
+import homeImage from '../assets/homeimage.jpg';
 import { Link } from "react-router-dom";
+
+// Simple homepage with a picture and description
+
 function HomePage() {
     return (
         <div>
             <h1>Välkommen till naturens hotell!</h1>
-            <img src="src/assets/homeimage.jpg" width={500} height={300} alt="Naturbild" />
+            <img src={homeImage} width={500} height={300} alt="Naturbild" />
             <p>Här möter du en unik kombination av naturen och bekvämligheten.</p>
             <Link to="./rooms">Utforska våra rum</Link>
         </div>

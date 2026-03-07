@@ -1,3 +1,6 @@
+import bigRoomImg from '../assets/bigroom.jpg';
+
+// big room, picture imported because of netlify not showing local image else
 function BigRoom() {
     return (
         <div>
@@ -5,7 +8,7 @@ function BigRoom() {
             <p>Vårt stora rum erbjuder en rymlig och bekväm miljö för avkoppling och njutning.
                 Med plats för hela familjen eller vännerna,
                 är det det perfekta valet för en minnesvärd vistelse.</p>
-            <img src="src/assets/bigroom.jpg" width={500} height={300} alt="Stort rum" />
+            <img src={bigRoomImg} width={500} height={300} alt="Stort rum" />
         </div>
     );
 }

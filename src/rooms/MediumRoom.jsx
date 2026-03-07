@@ -1,3 +1,6 @@
+import mediumRoomImg from '../assets/mediumroom.jpg';
+
+// medium room, picture imported because of netlify not showing local image else
 function MediumRoom() {
     return (
         <div>
@@ -7,7 +10,7 @@ function MediumRoom() {
                 Med modern inredning och stora fönster som släpper in naturligt ljus,
                 är detta rum perfekt för dig som vill ha en balans
                 mellan komfort och funktionalitet under din vistelse hos oss.</p>
-            <img src="src/assets/mediumroom.jpg" width={500} height={300} alt="Bild på mellan-stort rum" />
+            <img src={mediumRoomImg} width={500} height={300} alt="Bild på mellan-stort rum" />
         </div>
     )
 }

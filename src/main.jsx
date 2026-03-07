@@ -5,6 +5,8 @@ import RoomPage from './components/RoomPage';
 import BookingPage from './components/BookingPage';
 import NavBar from './components/NavBar';
 
+// navbar showing above all routes
+// outlet is a placeholder for the routes
 
 const Layout = () => (
   <div>
@@ -13,7 +15,7 @@ const Layout = () => (
   </div>
 )
 
-
+// clientside routing
 const router = createBrowserRouter([
   {
     path: `/`,
