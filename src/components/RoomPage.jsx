@@ -2,6 +2,7 @@ import SmallRoom from "../rooms/SmallRoom";
 import MediumRoom from "../rooms/MediumRoom";
 import BigRoom from "../rooms/BigRoom";
 import { useState } from "react";
+import "../styles.css";
 
 function RoomPage() {
 
@@ -29,28 +30,26 @@ function RoomPage() {
         }
         setBookingTrigger(!bookingTrigger)
     }
-    // dont want accept/decline to show if theres no choice made
+    // dont want accept to show if theres no choice made
     const showAcceptDecline = () => {
         if (roomSize && localStorage.getItem("booked-room") !== JSON.stringify(roomSize)) {
             return (
-                <>
-                    <button onClick={handleChoice}>Boka</button>
-                    <button onClick={() => setRoomSize("")}>Avbryt</button>
-                </>
+
+                <button className="btn" style={{ maxWidth: " 100px" }} onClick={handleChoice}>Boka</button >
             )
         }
     }
     {/* giving the user choices, each choice comes with a description and picture*/ }
     return (
         <div>
-            <nav>
+            <nav className="container">
                 <ul className="ul-nav">
                     <li className="li-room">
-                        <button onClick={() => setRoomSize("small")}> small </button></li>
+                        <button className="btn" onClick={() => setRoomSize("small")}> Singel </button></li>
                     <li className="li-room">
-                        <button onClick={() => setRoomSize("medium")}> mid </button></li>
+                        <button className="btn" onClick={() => setRoomSize("medium")}> Dubbel </button></li>
                     <li className="li-room">
-                        <button onClick={() => setRoomSize("big")}> big </button></li>
+                        <button className="btn" onClick={() => setRoomSize("big")}> Suite </button></li>
                 </ul>
             </nav>
 
@@ -60,8 +59,10 @@ function RoomPage() {
             </article>
 
             {/* accept or decline showing if choice is made otherwise hidden */}
-            <article>
-                {showAcceptDecline()}
+            <article className="container">
+                <span className="ul-nav">
+                    {showAcceptDecline()}
+                </span>
             </article>
         </div >
     )

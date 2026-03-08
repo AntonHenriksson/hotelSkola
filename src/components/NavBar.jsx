@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 // apparently this is a a-href but updates faster for clientside routing
 function NavBar() {
     return (
-        <nav>
+        <nav className="nav-bar">
             <ul className='ul-nav'>
                 <li className='li-nav'><Link className='nav-link' to="./">Hem</Link></li>
-                <li className='li-nav'><Link className='nav-link' to="./rooms">Våra Rum</Link></li>
-                <li className='li-nav'><Link className='nav-link' to="./bookings">Dina Bokningar</Link></li>
+                <li className='li-nav'><Link className='nav-link' to="./rooms">Rum</Link></li>
+                <li className='li-nav'><Link className='nav-link' to="./bookings">Bokningar</Link></li>
             </ul>
         </nav>
     )
