@@ -1,6 +1,7 @@
 import SmallRoom from "../rooms/SmallRoom";
 import MediumRoom from "../rooms/MediumRoom";
 import BigRoom from "../rooms/BigRoom";
+import Booking from "./Booking";
 import { useState } from "react";
 import "../styles.css";
 
@@ -10,6 +11,12 @@ function RoomPage() {
     const [roomSize, setRoomSize] = useState("small");
     // bool only for updating prior state with quick turn
     const [bookingTrigger, setBookingTrigger] = useState(false);
+
+    // states for Booking-form
+    const [arrival, setArrival] = useState("");
+    const [departure, setDeparture] = useState("");
+    const [userName, setUserName] = useState("");
+
 
     // taking user choice and turning it into a jsx show
     const handleRoomSize = () => {
@@ -25,16 +32,23 @@ function RoomPage() {
     }
     // converting object to string and turning a bool to update state
     const handleChoice = () => {
-        if (roomSize) {
-            localStorage.setItem("booked-room", JSON.stringify(roomSize))
+
+        if (roomSize && arrival && departure) {
+            const bookingData = {
+                room: roomSize,
+                from: arrival,
+                to: departure,
+                name: userName
+            }
+            const id = Date.now()
+            localStorage.setItem(id, JSON.stringify(bookingData))
         }
         setBookingTrigger(!bookingTrigger)
     }
     // dont want accept to show if theres no choice made
-    const showAcceptDecline = () => {
-        if (roomSize && localStorage.getItem("booked-room") !== JSON.stringify(roomSize)) {
+    const showAccept = () => {
+        if (roomSize) {
             return (
-
                 <button className="btn" style={{ maxWidth: " 100px" }} onClick={handleChoice}>Boka</button >
             )
         }
@@ -44,16 +58,29 @@ function RoomPage() {
 
         < div >
 
-
-            {/* here the user choice is handled and respectivly jsx is choosen */}
             <article>
+                {/* here the user choice is handled and respectivly jsx is choosen */}
                 {handleRoomSize()}
+
+                {/* showing the booking form */}
+                <Booking
+                    arrival={arrival}
+                    setArrival={setArrival}
+                    departure={departure}
+                    setDeparture={setDeparture}
+                    userName={userName}
+                    setUserName={setUserName}
+                />
             </article>
 
-            {/* accept or decline showing if choice is made otherwise hidden */}
+            {/* accept showing if choice is made otherwise hidden */}
             <article className="container">
                 <span className="ul-nav">
-                    {showAcceptDecline()}
+
+                    {showAccept()}
+                    <span className="">
+
+                    </span>
                 </span>
             </article>
 

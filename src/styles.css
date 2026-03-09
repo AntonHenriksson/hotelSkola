@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial sans-serif;
     margin: 2px;
     padding: 0px;
     background-color: #f9f9f9;
@@ -29,6 +29,25 @@ img {
     display: block;
     border-radius: 10px;
 
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #33333312;
+    padding: 10px;
+
+}
+
+input {
+    display: flex;
+    text-align: center;
+    padding: 10px;
+    margin: 4px;
+    border: solid;
+    border-color: gray;
 }
 
 .header {

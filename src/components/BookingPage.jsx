@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function BookingPage() {
 
-    // state only for checking if theres a booking later
-    const [booking, setBooking] = useState(localStorage.getItem("booked-room"))
+    // state getting all bookings
+    const [allBookings, setAllBookings] = useState([]);
+
+    useEffect(() => {
+        const bookings = []
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i)
+            const item = JSON.parse(localStorage.getItem(key))
+            bookings.push({ ...item, storageKey: key })
+        }
+        setAllBookings(bookings)
+    }, [])
 
     //remove the booking if cancelling
-    const handleCancel = () => {
-        localStorage.removeItem("booked-room")
-        setBooking(null)
+    const handleCancel = (key) => {
+        localStorage.removeItem(key)
+        setAllBookings(allBookings.filter(b => b.storageKey !== key));
     }
     // if booking is not null user is shown choice to cancel
     const showCancel = () => {
@@ -17,12 +27,26 @@ function BookingPage() {
     }
     return (
         <section>
-            {/* if theres a booking we show cancel else we tell the user theres no booked room*/}
+
+            {/* if theres  bookings we show the bookings else we tell
+                     the user theres no booked room*/}
             <article>
-                {booking ? localStorage.getItem("booked-room") : "Du har inga bokade rum"}
+                {allBookings.length > 0 ? (
+                    allBookings.map((b) => (
+                        <article key={b.storageKey}>
+                            <p>{b.room} - {b.name}</p>
+                            <p>{b.from}</p>
+                            <p>{b.to}</p>
+                            <button className="btn" onClick={() => { handleCancel(b.storageKey) }}>
+                                Avboka</button>
+                        </article>
+                    ))
+                )
+                    : <p>Inga bokningar hittades</p>
+                }
             </article>
-            {/* here the user is shown the cancel button for the booking if there is one */}
-            {showCancel()}
+
+
         </section>
     )
 }
