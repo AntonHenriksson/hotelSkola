@@ -10,7 +10,7 @@ function HomePage() {
             <h1 className="header">Välkommen till naturens hotell</h1>
             <img src={homeImage} alt="Naturbild" />
 
-            <p>Här möter du en unik kombination av naturen och bekvämlighet</p>
+            <p>Här möts en unik kombination av naturen och bekvämlighet</p>
             <Link className="nav-link" style={{ borderBottom: "solid" }} to="./rooms">
                 {"--- Utforska våra rum ---"}
             </Link>
