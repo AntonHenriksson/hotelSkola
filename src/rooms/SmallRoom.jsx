@@ -2,13 +2,18 @@
 
 function SmallRoom() {
     return (
-        <div className="container">
-            <h2>Small room</h2>
-            <p>Vårt lilla rum är perfekt för den som söker en mysig och intim atmosfär.
-                Med en säng som rymmer två personer, en liten sittgrupp och en vacker utsikt över naturen,
-                erbjuder detta rum en avkopplande och romantisk upplevelse.
-                Det är det idealiska valet för par eller ensamresenärer som vill njuta av en lugn och naturnära vistelse.</p>
-        </div>
+        <>
+            <h2 className="header">Singel</h2>
+            <div className="container">
+
+                <p> Valet för par eller ensamresenärer som vill njuta av en naturnära vistelse</p>
+                <ul className="room-container">
+                    <li className="li-spec-room">Säng som rymmer två personer</li>
+                    <li className="li-spec-room">Liten sittgrupp med TV</li>
+                    <li className="li-spec-room">Utsikt över naturen</li>
+                </ul>
+            </div>
+        </>
     );
 }
 export default SmallRoom;

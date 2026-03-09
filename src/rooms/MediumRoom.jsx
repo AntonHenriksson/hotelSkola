@@ -2,14 +2,18 @@
 
 function MediumRoom() {
     return (
-        <div className="container">
-            <h2>Medium Room</h2>
-            <p>Vårt Medium Room erbjuder en bekväm och avkopplande miljö för både affärsresenärer och semesterfirare.
-                Rummet är utrustat med en bekväm dubbelsäng, ett skrivbord för arbete, och en sittgrupp för avkoppling.
-                Med modern inredning och stora fönster som släpper in naturligt ljus,
-                är detta rum perfekt för dig som vill ha en balans
-                mellan komfort och funktionalitet under din vistelse hos oss.</p>
-        </div>
+        <>
+            <h2 className="header">Dubbel</h2>
+            <div className="container">
+
+                <p> Valet för familjen eller par med lite mer behov av plats</p>
+                <ul className="room-container">
+                    <li className="li-spec-room">Dubbelsäng och två enkelsängar</li>
+                    <li className="li-spec-room">Stor sittgrupp och matsal</li>
+                    <li className="li-spec-room">Utsikt över naturen</li>
+                </ul>
+            </div>
+        </>
     )
 }
 export default MediumRoom;

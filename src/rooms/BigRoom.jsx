@@ -1,12 +1,19 @@
 
 function BigRoom() {
     return (
-        <div className="container">
-            <h2>Stort rum</h2>
-            <p>Vårt stora rum erbjuder en rymlig och bekväm miljö för avkoppling och njutning.
-                Med plats för hela familjen eller vännerna,
-                är det det perfekta valet för en minnesvärd vistelse.</p>
-        </div>
+
+        <>
+            <h2 className="header">Deluxe</h2>
+            <div className="container">
+
+                <p> Ett exklusivt paket för den som värdesätter lyx och bekvämlighet</p>
+                <ul className="room-container">
+                    <li className="li-spec-room">Lyxig Dubbelsäng och två enkelsängar</li>
+                    <li className="li-spec-room">Hel våning med fem rum inklusive bar</li>
+                    <li className="li-spec-room">Vacker utsikt över naturen</li>
+                </ul>
+            </div>
+        </>
     );
 }
 export default BigRoom;

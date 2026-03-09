@@ -39,19 +39,11 @@ function RoomPage() {
             )
         }
     }
-    {/* giving the user choices, each choice comes with a description and picture*/ }
+
     return (
-        <div>
-            <nav className="container">
-                <ul className="ul-nav">
-                    <li className="li-room">
-                        <button className="btn" onClick={() => setRoomSize("small")}> Singel </button></li>
-                    <li className="li-room">
-                        <button className="btn" onClick={() => setRoomSize("medium")}> Dubbel </button></li>
-                    <li className="li-room">
-                        <button className="btn" onClick={() => setRoomSize("big")}> Suite </button></li>
-                </ul>
-            </nav>
+
+        < div >
+
 
             {/* here the user choice is handled and respectivly jsx is choosen */}
             <article>
@@ -64,6 +56,19 @@ function RoomPage() {
                     {showAcceptDecline()}
                 </span>
             </article>
+
+            {/* giving the user choices, each choice comes with a description*/}
+            <nav className="container">
+                <ul className="ul-nav">
+                    <li className="li-room">
+                        <button className="btn" onClick={() => setRoomSize("small")}> Singel </button></li>
+                    <li className="li-room">
+                        <button className="btn" onClick={() => setRoomSize("medium")}> Dubbel </button></li>
+                    <li className="li-room">
+                        <button className="btn" onClick={() => setRoomSize("big")}> Deluxe </button></li>
+                </ul>
+            </nav>
+
         </div >
     )
 }
