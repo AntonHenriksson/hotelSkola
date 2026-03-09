@@ -6,8 +6,8 @@ import "../styles.css";
 
 function RoomPage() {
 
-    // state for choice
-    const [roomSize, setRoomSize] = useState("");
+    // state for choice with default value for better ux
+    const [roomSize, setRoomSize] = useState("small");
     // bool only for updating prior state with quick turn
     const [bookingTrigger, setBookingTrigger] = useState(false);
 
