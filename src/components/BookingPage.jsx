@@ -4,6 +4,7 @@ function BookingPage() {
     // state getting all bookings
     const [allBookings, setAllBookings] = useState([]);
 
+    // using effect to collect all data once when page load
     useEffect(() => {
         const bookings = []
         for (let i = 0; i < localStorage.length; i++) {
@@ -42,7 +43,7 @@ function BookingPage() {
                         </article>
                     ))
                 )
-                    : <p>Inga bokningar hittades</p>
+                    : <article className="container"> <p>Inga bokningar hittades</p></article>
                 }
             </article>
 

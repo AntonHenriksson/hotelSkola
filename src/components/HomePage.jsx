@@ -1,4 +1,4 @@
-import homeImage from '../assets/homesmall.jpg';
+import homeImage from '../assets/hometest.jpg';
 import { Link } from "react-router-dom";
 
 // Simple homepage with a picture and description

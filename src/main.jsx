@@ -4,6 +4,7 @@ import HomePage from './components/HomePage';
 import RoomPage from './components/RoomPage';
 import BookingPage from './components/BookingPage';
 import NavBar from './components/NavBar';
+import ErrorPage from './components/ErrorPage';
 
 // navbar showing above all routes
 // outlet is a placeholder for the routes
@@ -11,7 +12,9 @@ import NavBar from './components/NavBar';
 const Layout = () => (
   <div>
     <NavBar />
-    <Outlet />
+    <main> {/* this is something I found in my Lighthouse */}
+      <Outlet />
+    </main>
   </div>
 )
 
@@ -20,6 +23,7 @@ const router = createBrowserRouter([
   {
     path: `/`,
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: `/`,
@@ -36,6 +40,7 @@ const router = createBrowserRouter([
     ]
   }]);
 
+// main.jsx
 createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
 )

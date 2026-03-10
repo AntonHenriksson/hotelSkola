@@ -11,7 +11,9 @@ function RoomPage() {
     const [roomSize, setRoomSize] = useState("Singel-rum");
     // bool for showing booking form, only shows if user has made a choice
     const [showBookingForm, setShowBookingForm] = useState(false);
-    // state for showing UX messag with booking
+    // state for showing UX message with booking
+    // I will clean these using boilerplate because
+    // react-docs tells me its more efficient than using a effect
     const [showBookMessage, setShowBookMessage] = useState("");
     const [showBookErrorMessage, setShowBookErrorMessage] = useState("");
 
@@ -93,7 +95,11 @@ function RoomPage() {
         if (showBookingForm) {
             return (
                 <>
-                    <button className="btn" style={{ maxWidth: " 100px" }} onClick={() => setShowBookingForm(false)}>Avbryt</button >
+                    <button className="btn" style={{ maxWidth: " 100px" }} onClick={() => {
+                        setShowBookingForm(false)
+                        setShowBookErrorMessage("")
+                        setShowBookMessage("")
+                    }}>Avbryt</button >
                     <button className="btn" style={{ maxWidth: " 100px" }} onClick={handleChoice}>Boka</button >
 
                 </>
@@ -104,45 +110,55 @@ function RoomPage() {
     const handleShowBooking = () => {
         if (!showBookingForm)
             return (
-                <button className="btn" style={{ maxWidth: " 100px" }} onClick={() => setShowBookingForm(true)}>Välj Datum</button>
+                <button className="btn" style={{ maxWidth: " 100px" }} onClick={() => {
+                    setShowBookingForm(true)
+                    setShowBookErrorMessage("")
+                    setShowBookMessage("")
+                }}>Välj Datum</button>
             )
 
     }
 
     return (
-
         < div >
-
             <article>
                 {/* here the user choice is handled and respective jsx is choosen */}
                 {handleRoomSize()}
-
                 {/* placement of the booking form is here */}
                 {showBooking()}
             </article>
-
-            {/* accept showing if choice is made otherwise hidden */}
             <article className="container">
+                {/* showing success or error message with booking */}
                 {handleBookMessage()}
                 <span className="ul-nav">
                     {/* placement of buttons, for showing booking form and accept/decline for the same */}
                     {/* these will only be shown if respective state is fulfilled */}
                     {handleShowBooking()}
                     {showAccept()}
-
                 </span>
             </article>
-
             {/* giving the user choices, each choice comes with a description*/}
             {/* UX these will never be hidden to give the user the feel of control UX */}
             <nav className="container">
                 <ul className="ul-nav">
                     <li className="li-room">
-                        <button className="btn" onClick={() => setRoomSize("Singel-rum")}> Singel </button></li>
+                        <button className="btn" onClick={() => {
+                            setRoomSize("Singel-rum")
+                            setShowBookErrorMessage("")
+                            setShowBookMessage("")
+                        }}> Singel </button></li>
                     <li className="li-room">
-                        <button className="btn" onClick={() => setRoomSize("Dubbel-rum")}> Dubbel </button></li>
+                        <button className="btn" onClick={() => {
+                            setRoomSize("Dubbel-rum")
+                            setShowBookErrorMessage("")
+                            setShowBookMessage("")
+                        }}> Dubbel </button></li>
                     <li className="li-room">
-                        <button className="btn" onClick={() => setRoomSize("Deluxe-rum")}> Deluxe </button></li>
+                        <button className="btn" onClick={() => {
+                            setRoomSize("Deluxe-rum")
+                            setShowBookErrorMessage("")
+                            setShowBookMessage("")
+                        }}> Deluxe </button></li>
                 </ul>
             </nav>
 
