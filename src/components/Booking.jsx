@@ -6,7 +6,7 @@ function Booking({ arrival, setArrival, departure, setDeparture, userName, setUs
 
     return (
         <div className="container"  >
-            <fieldset style={{ border: "solid", borderColor: "grey" }} >
+            <fieldset style={{ border: "solid", borderColor: "grey", borderRadius: "10px" }} >
                 <legend style={{ textAlign: "center" }}>Boknings detaljer</legend>
                 <input type="text" placeholder="Ditt förnamn här"
 

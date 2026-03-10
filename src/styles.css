@@ -48,6 +48,7 @@ input {
     margin: 4px;
     border: solid;
     border-color: gray;
+    border-radius: 10px;
 }
 
 .header {
@@ -76,6 +77,7 @@ input {
     max-width: 500px;
     justify-content: center;
     border: solid;
+    border-radius: 10px;
     border-color: grey;
 
 }
@@ -90,6 +92,7 @@ input {
     max-width: 500px;
     justify-content: center;
     border: solid;
+    border-radius: 10px;
     border-color: grey;
 }
 
@@ -180,6 +183,7 @@ input {
     color: black;
     border: solid;
     border-color: gray;
+    border-radius: 10px;
     padding: 10px 0;
     min-width: 80px;
 

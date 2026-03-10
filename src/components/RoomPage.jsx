@@ -11,6 +11,9 @@ function RoomPage() {
     const [roomSize, setRoomSize] = useState("Singel-rum");
     // bool for showing booking form, only shows if user has made a choice
     const [showBookingForm, setShowBookingForm] = useState(false);
+    // state for showing UX messag with booking
+    const [showBookMessage, setShowBookMessage] = useState("");
+    const [showBookErrorMessage, setShowBookErrorMessage] = useState("");
 
     // states for Booking-form
     const [arrival, setArrival] = useState("");
@@ -30,22 +33,46 @@ function RoomPage() {
             default: null
         }
     }
+    // if any of the messages isnt false it should be shown, else hidden
+    const handleBookMessage = () => {
+        let message = ""
+        showBookErrorMessage ? message = showBookErrorMessage : message = showBookMessage
+        return (showBookErrorMessage || showBookMessage ?
+            <div className="header" style={{ textAlign: "center" }}>
+                {message}
+            </div>
+            : null
+        )
+    }
+
     // converting object to string and turning a bool to update state
     const handleChoice = () => {
+        setShowBookErrorMessage("")
+        setShowBookMessage("")
+        if (!roomSize || !arrival || !departure) {
+            setShowBookErrorMessage("Vänligen fyll i alla fälten!")
+            return
+        }
 
-        if (roomSize && arrival && departure) {
-            const bookingData = {
-                room: roomSize,
-                from: arrival,
-                to: departure,
-                name: userName
-            }
-            const id = Date.now()
+        const bookingData = {
+            room: roomSize,
+            from: arrival,
+            to: departure,
+            name: userName
+        }
+        const id = Date.now()
+        try {
             localStorage.setItem(id, JSON.stringify(bookingData))
             setShowBookingForm(false)
-
+            setShowBookMessage("Din bokning sparades!")
+            return
+        }
+        catch (e) {
+            alert("Tekniskt fel, vänligen försök igen")
+            return
         }
     }
+
     // showing the booking form if user has made a choice
     const showBooking = () => {
         if (showBookingForm) {
@@ -75,7 +102,7 @@ function RoomPage() {
     }
     // showing button to form for booking, hidden if pressed
     const handleShowBooking = () => {
-        if (!!!showBookingForm)
+        if (!showBookingForm)
             return (
                 <button className="btn" style={{ maxWidth: " 100px" }} onClick={() => setShowBookingForm(true)}>Välj Datum</button>
             )
@@ -90,22 +117,24 @@ function RoomPage() {
                 {/* here the user choice is handled and respective jsx is choosen */}
                 {handleRoomSize()}
 
-                {/* showing the booking form */}
+                {/* placement of the booking form is here */}
                 {showBooking()}
             </article>
 
             {/* accept showing if choice is made otherwise hidden */}
             <article className="container">
+                {handleBookMessage()}
                 <span className="ul-nav">
+                    {/* placement of buttons, for showing booking form and accept/decline for the same */}
+                    {/* these will only be shown if respective state is fulfilled */}
                     {handleShowBooking()}
                     {showAccept()}
-                    <span className="">
 
-                    </span>
                 </span>
             </article>
 
             {/* giving the user choices, each choice comes with a description*/}
+            {/* UX these will never be hidden to give the user the feel of control UX */}
             <nav className="container">
                 <ul className="ul-nav">
                     <li className="li-room">
