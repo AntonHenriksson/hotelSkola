@@ -8,9 +8,9 @@ import "../styles.css";
 function RoomPage() {
 
     // state for choice with default value for better ux
-    const [roomSize, setRoomSize] = useState("small");
-    // bool only for updating prior state with quick turn
-    const [bookingTrigger, setBookingTrigger] = useState(false);
+    const [roomSize, setRoomSize] = useState("Singel-rum");
+    // bool for showing booking form, only shows if user has made a choice
+    const [showBookingForm, setShowBookingForm] = useState(false);
 
     // states for Booking-form
     const [arrival, setArrival] = useState("");
@@ -21,11 +21,11 @@ function RoomPage() {
     // taking user choice and turning it into a jsx show
     const handleRoomSize = () => {
         switch (roomSize) {
-            case "small":
+            case "Singel-rum":
                 return <SmallRoom />
-            case "medium":
+            case "Dubbel-rum":
                 return <MediumRoom />
-            case "big":
+            case "Deluxe-rum":
                 return <BigRoom />
             default: null
         }
@@ -42,27 +42,14 @@ function RoomPage() {
             }
             const id = Date.now()
             localStorage.setItem(id, JSON.stringify(bookingData))
+            setShowBookingForm(false)
+
         }
-        setBookingTrigger(!bookingTrigger)
     }
-    // dont want accept to show if theres no choice made
-    const showAccept = () => {
-        if (roomSize) {
+    // showing the booking form if user has made a choice
+    const showBooking = () => {
+        if (showBookingForm) {
             return (
-                <button className="btn" style={{ maxWidth: " 100px" }} onClick={handleChoice}>Boka</button >
-            )
-        }
-    }
-
-    return (
-
-        < div >
-
-            <article>
-                {/* here the user choice is handled and respectivly jsx is choosen */}
-                {handleRoomSize()}
-
-                {/* showing the booking form */}
                 <Booking
                     arrival={arrival}
                     setArrival={setArrival}
@@ -71,12 +58,46 @@ function RoomPage() {
                     userName={userName}
                     setUserName={setUserName}
                 />
+            )
+        }
+    }
+    // showing book button if user has made a choice otherwise hidden
+    const showAccept = () => {
+        if (showBookingForm) {
+            return (
+                <>
+                    <button className="btn" style={{ maxWidth: " 100px" }} onClick={() => setShowBookingForm(false)}>Avbryt</button >
+                    <button className="btn" style={{ maxWidth: " 100px" }} onClick={handleChoice}>Boka</button >
+
+                </>
+            )
+        }
+    }
+    // showing button to form for booking, hidden if pressed
+    const handleShowBooking = () => {
+        if (!!!showBookingForm)
+            return (
+                <button className="btn" style={{ maxWidth: " 100px" }} onClick={() => setShowBookingForm(true)}>Välj Datum</button>
+            )
+
+    }
+
+    return (
+
+        < div >
+
+            <article>
+                {/* here the user choice is handled and respective jsx is choosen */}
+                {handleRoomSize()}
+
+                {/* showing the booking form */}
+                {showBooking()}
             </article>
 
             {/* accept showing if choice is made otherwise hidden */}
             <article className="container">
                 <span className="ul-nav">
-
+                    {handleShowBooking()}
                     {showAccept()}
                     <span className="">
 
@@ -88,11 +109,11 @@ function RoomPage() {
             <nav className="container">
                 <ul className="ul-nav">
                     <li className="li-room">
-                        <button className="btn" onClick={() => setRoomSize("small")}> Singel </button></li>
+                        <button className="btn" onClick={() => setRoomSize("Singel-rum")}> Singel </button></li>
                     <li className="li-room">
-                        <button className="btn" onClick={() => setRoomSize("medium")}> Dubbel </button></li>
+                        <button className="btn" onClick={() => setRoomSize("Dubbel-rum")}> Dubbel </button></li>
                     <li className="li-room">
-                        <button className="btn" onClick={() => setRoomSize("big")}> Deluxe </button></li>
+                        <button className="btn" onClick={() => setRoomSize("Deluxe-rum")}> Deluxe </button></li>
                 </ul>
             </nav>
 

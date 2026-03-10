@@ -5,8 +5,8 @@ function Booking({ arrival, setArrival, departure, setDeparture, userName, setUs
 
 
     return (
-        <div className="container">
-            <fieldset>
+        <div className="container"  >
+            <fieldset style={{ border: "solid", borderColor: "grey" }} >
                 <legend style={{ textAlign: "center" }}>Boknings detaljer</legend>
                 <input type="text" placeholder="Ditt förnamn här"
 
@@ -28,7 +28,7 @@ function Booking({ arrival, setArrival, departure, setDeparture, userName, setUs
                 />
 
             </fieldset>
-        </div>
+        </div >
     )
 }
 

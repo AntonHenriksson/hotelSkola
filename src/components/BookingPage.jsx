@@ -19,12 +19,7 @@ function BookingPage() {
         localStorage.removeItem(key)
         setAllBookings(allBookings.filter(b => b.storageKey !== key));
     }
-    // if booking is not null user is shown choice to cancel
-    const showCancel = () => {
-        return booking ? (
-            <button onClick={handleCancel}>Avboka</button>
-        ) : null
-    }
+
     return (
         <section>
 
@@ -33,12 +28,17 @@ function BookingPage() {
             <article>
                 {allBookings.length > 0 ? (
                     allBookings.map((b) => (
-                        <article key={b.storageKey}>
-                            <p>{b.room} - {b.name}</p>
-                            <p>{b.from}</p>
-                            <p>{b.to}</p>
-                            <button className="btn" onClick={() => { handleCancel(b.storageKey) }}>
-                                Avboka</button>
+                        <article className="room-container" key={b.storageKey}>
+
+                            <li className="li-spec-room">{b.room} - {b.name}</li>
+                            <li className="li-spec-room">{"Från  --"}{b.from}</li>
+                            <li className="li-spec-room">{"Till  --"}{b.to}</li>
+                            <li className="li-spec-room">
+                                <button className="btn" onClick={() => { handleCancel(b.storageKey) }}>
+                                    Avboka
+                                </button>
+                            </li>
+
                         </article>
                     ))
                 )
@@ -47,7 +47,7 @@ function BookingPage() {
             </article>
 
 
-        </section>
+        </section >
     )
 }
 export default BookingPage;
