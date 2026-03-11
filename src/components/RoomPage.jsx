@@ -12,7 +12,7 @@ function RoomPage() {
     // bool for showing booking form, only shows if user has made a choice
     const [showBookingForm, setShowBookingForm] = useState(false);
     // state for showing UX message with booking
-    // I will clean these using boilerplate because
+    // will clean these using boilerplate because
     // react-docs tells me its more efficient than using a effect
     const [showBookMessage, setShowBookMessage] = useState("");
     const [showBookErrorMessage, setShowBookErrorMessage] = useState("");
