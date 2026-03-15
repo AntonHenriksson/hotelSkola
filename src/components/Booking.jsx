@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 function Booking({ arrival, setArrival, departure, setDeparture, userName, setUserName }) {
 

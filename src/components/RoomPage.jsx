@@ -3,7 +3,6 @@ import MediumRoom from "../rooms/MediumRoom";
 import BigRoom from "../rooms/BigRoom";
 import Booking from "./Booking";
 import { useState } from "react";
-import "../styles.css";
 
 function RoomPage() {
 
